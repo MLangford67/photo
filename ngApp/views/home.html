@@ -1,0 +1,10 @@
+<h2>Home</h2>
+<a href="/addPhoto">Add Photo</a>
+
+<ul>
+  <li ng-repeat="m in vm.photo">{{vm.url}}
+    <img ng-src="{{vm.photo}}"></img>
+    <a href="/editPhoto/{{vm._id}}">Edit</a>
+    <a href="#" ng-click="vm.deletePhoto(vm._id)">Delete</a>
+  </li>
+</ul>
