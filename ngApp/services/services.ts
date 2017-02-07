@@ -3,9 +3,8 @@ namespace photo.Services {
    public PhotoResource;
 
    public savePhoto(photo) {
-     
-     return this.PhotoResource.save(photo).$promise;
-   }
+      return this.PhotoResource.save({url: photo}).$promise;
+  }
 
    public getPhoto() {
      return this.PhotoResource.query();
