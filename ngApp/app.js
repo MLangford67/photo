@@ -1,6 +1,7 @@
 var photo;
 (function (photo) {
-    angular.module('photo', ['ui.router', 'ngResource', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    angular.module('photo', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config(function ($stateProvider, $urlRouterProvider, $locationProvider, filepickerProvider) {
+        filepickerProvider.setKey('AARGLmswLTmCJJxuSdd5Iz');
         $stateProvider
             .state('home', {
             url: '/',

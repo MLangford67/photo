@@ -3,13 +3,25 @@ var photo;
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
-            function HomeController(photoService, $window, $location, $state) {
+            function HomeController(filepickerService, $scope, photoService, $window, $location, $state) {
+                this.filepickerService = filepickerService;
+                this.$scope = $scope;
                 this.photoService = photoService;
                 this.$window = $window;
                 this.$location = $location;
                 this.$state = $state;
                 this.photo = photoService.getPhoto();
             }
+            HomeController.prototype.pickFile = function () {
+                this.filepickerService.pick({
+                    mimetype: 'image/*'
+                }, this.fileUploaded.bind(this));
+            };
+            HomeController.prototype.fileUploaded = function (file) {
+                this.file = file;
+                this.url = this.file.url;
+                this.$scope.$apply();
+            };
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;
                 this.photoService.deletePhoto(id).then(function () {

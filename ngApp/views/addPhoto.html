@@ -1,6 +1,8 @@
 <h2>Add Photo</h2>
 
-<input type="text" placeholder="image url" ng-model="vm.photo" />
 
+<input type='text' placeholder='title' ng-model='vm.photo.title'/>
+<input type='text' placeholder='description' ng-model='vm.photo.description'/>
 
-<button ng-click="vm.addPhoto()">ADD</button>
+<button ng-click="vm.pickFile()">Upload</button>
+<!-- <button ng-click="vm.addPhoto()">ADD</button> -->

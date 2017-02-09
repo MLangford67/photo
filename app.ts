@@ -7,6 +7,7 @@ import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 import photo from './api/photos';
 import Database from './db';
+import Photo from './models/photoSchema';
 
 Database.connect();
 

@@ -1,10 +1,12 @@
 namespace photo {
 
-    angular.module('photo', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('photo', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        filepickerProvider
     ) => {
+      filepickerProvider.setKey('AARGLmswLTmCJJxuSdd5Iz');
         // Define routes
         $stateProvider
             .state('home', {
