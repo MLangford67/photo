@@ -3,8 +3,7 @@ var photo;
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
-            function HomeController(filepickerService, $scope, photoService, $window, $location, $state) {
-                this.filepickerService = filepickerService;
+            function HomeController($scope, photoService, $window, $location, $state) {
                 this.$scope = $scope;
                 this.photoService = photoService;
                 this.$window = $window;
@@ -12,15 +11,6 @@ var photo;
                 this.$state = $state;
                 this.photo = photoService.getPhoto();
             }
-            HomeController.prototype.pickFile = function () {
-                this.filepickerService.pick({
-                    mimetype: 'image/*'
-                }, this.fileUploaded.bind(this));
-            };
-            HomeController.prototype.fileUploaded = function (file) {
-                this.photo.url = file.url;
-                this.photoService.savePhoto(this.photo);
-            };
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;
                 this.photoService.deletePhoto(id).then(function () {
@@ -31,7 +21,8 @@ var photo;
         }());
         Controllers.HomeController = HomeController;
         var AddPhotoController = (function () {
-            function AddPhotoController(photoService, $state) {
+            function AddPhotoController(filepickerService, photoService, $state) {
+                this.filepickerService = filepickerService;
                 this.photoService = photoService;
                 this.$state = $state;
             }
@@ -40,6 +31,15 @@ var photo;
                 this.photoService.savePhoto(this.photo).then(function () {
                     _this.$state.go('home');
                 });
+            };
+            AddPhotoController.prototype.pickFile = function () {
+                this.filepickerService.pick({
+                    mimetype: 'image/*'
+                }, this.fileUploaded.bind(this));
+            };
+            AddPhotoController.prototype.fileUploaded = function (file) {
+                this.photo.url = file.url;
+                this.photoService.savePhoto(this.photo);
             };
             return AddPhotoController;
         }());

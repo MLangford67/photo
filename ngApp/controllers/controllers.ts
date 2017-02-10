@@ -4,19 +4,6 @@ namespace photo.Controllers {
       public file;
       public url;
 
-
-  public pickFile () {
-    this.filepickerService.pick({
-      mimetype: 'image/*'
-    }, this.fileUploaded.bind(this));
-  }
-
-  public fileUploaded(file) {
-    this.photo.url = file.url;
-    this.photoService.savePhoto(this.photo);
-  }
-
-
       public photo;
 
       public deletePhoto(id) {
@@ -26,7 +13,7 @@ namespace photo.Controllers {
  }
 
       constructor(
-          private filepickerService,
+
           private $scope: ng.IScope,
           private photoService: photo.Services.PhotoService,
           public $window,
@@ -48,8 +35,20 @@ export class AddPhotoController {
       this.$state.go('home');
     })
   }
+  public pickFile () {
+    this.filepickerService.pick({
+      mimetype: 'image/*'
+    }, this.fileUploaded.bind(this));
+  }
+
+  public fileUploaded(file) {
+    this.photo.url = file.url;
+    this.photoService.savePhoto(this.photo);
+  }
+
 
   constructor(
+    private filepickerService,
     private photoService: photo.Services.PhotoService,
     public $state
   ) {
