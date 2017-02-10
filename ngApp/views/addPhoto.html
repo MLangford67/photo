@@ -1,8 +1,10 @@
 <h2>Add Photo</h2>
 
-
+<form ng-submit='vm.pickFile()'>
+<div>
 <input type='text' placeholder='title' ng-model='vm.photo.title'/>
 <input type='text' placeholder='description' ng-model='vm.photo.description'/>
-
-<button ng-click="vm.pickFile()">Upload</button>
+</div>
+<button>Upload</button>
 <!-- <button ng-click="vm.addPhoto()">ADD</button> -->
+</form>
