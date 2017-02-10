@@ -18,9 +18,8 @@ var photo;
                 }, this.fileUploaded.bind(this));
             };
             HomeController.prototype.fileUploaded = function (file) {
-                this.file = file;
-                this.url = this.file.url;
-                this.$scope.$apply();
+                this.photo.url = file.url;
+                this.photoService.savePhoto(this.photo);
             };
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;

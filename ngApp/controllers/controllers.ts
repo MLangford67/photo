@@ -12,10 +12,8 @@ namespace photo.Controllers {
   }
 
   public fileUploaded(file) {
-    this.file = file;
-    this.url = this.file.url;
-    this.$scope.$apply();
-
+    this.photo.url = file.url;
+    this.photoService.savePhoto(this.photo);
   }
 
 
