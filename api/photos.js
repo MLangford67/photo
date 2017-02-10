@@ -5,6 +5,7 @@ var db_1 = require("../db");
 var router = express.Router();
 router.post('/', function (req, res) {
     var photo = req.body;
+    console.log(photo);
     photo._id = new mongodb.ObjectID(req.body._id);
     db_1.default.db.collection('photo').save(req.body).then(function (newPhoto) {
         res.json(newPhoto);

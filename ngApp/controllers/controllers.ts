@@ -59,14 +59,27 @@ export class EditPhotoController{
   public photo;
   public id;
 
- public editPhoto() {
+ public editPhoto(photo) {
    this.photo._id = this.id;
-   this.photoService.savePhoto(this.photo).then(() => {
-     this.$state.go('home');
-   })
+   this.photo.url = photo.url;
+   console.log(this.photo)
+  //  this.photoService.savePhoto(this.photo).then(() => {
+  //    this.$state.go('home');
+  //  })
+ }
+ public pickFile () {
+   this.filepickerService.pick({
+     mimetype: 'image/*'
+   }, this.fileUploaded.bind(this));
  }
 
+ public fileUploaded(file) {
+   this.photo.url = file.url;
+  //  this.photoService.savePhoto(this.photo);
+   console.log(this.photo);
+ }
  constructor(
+   private filepickerService,
    private photoService: photo.Services.PhotoService,
    public $state,
    public $stateParams

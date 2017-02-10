@@ -1,5 +1,5 @@
 var photo;
-(function (photo) {
+(function (photo_1) {
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
@@ -45,7 +45,8 @@ var photo;
         }());
         Controllers.AddPhotoController = AddPhotoController;
         var EditPhotoController = (function () {
-            function EditPhotoController(photoService, $state, $stateParams) {
+            function EditPhotoController(filepickerService, photoService, $state, $stateParams) {
+                this.filepickerService = filepickerService;
                 this.photoService = photoService;
                 this.$state = $state;
                 this.$stateParams = $stateParams;
@@ -53,15 +54,22 @@ var photo;
                     this.id = $stateParams['id'];
                 }
             }
-            EditPhotoController.prototype.editPhoto = function () {
-                var _this = this;
+            EditPhotoController.prototype.editPhoto = function (photo) {
                 this.photo._id = this.id;
-                this.photoService.savePhoto(this.photo).then(function () {
-                    _this.$state.go('home');
-                });
+                this.photo.url = photo.url;
+                console.log(this.photo);
+            };
+            EditPhotoController.prototype.pickFile = function () {
+                this.filepickerService.pick({
+                    mimetype: 'image/*'
+                }, this.fileUploaded.bind(this));
+            };
+            EditPhotoController.prototype.fileUploaded = function (file) {
+                this.photo.url = file.url;
+                console.log(this.photo);
             };
             return EditPhotoController;
         }());
         Controllers.EditPhotoController = EditPhotoController;
-    })(Controllers = photo.Controllers || (photo.Controllers = {}));
+    })(Controllers = photo_1.Controllers || (photo_1.Controllers = {}));
 })(photo || (photo = {}));

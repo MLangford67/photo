@@ -7,7 +7,7 @@ let router = express.Router();
 router.post('/', (req, res) => {
 
   let photo = req.body;
-
+  console.log(photo);
   photo._id = new mongodb.ObjectID(req.body._id);
   database.db.collection('photo').save(req.body).then((newPhoto) => {
     res.json(newPhoto);
