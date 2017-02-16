@@ -20,6 +20,7 @@ photo.save(function(err, newPhoto){
   }else{
     res.end();
   }
+
 })
 });
 router.get('/', (req, res) => {
@@ -29,8 +30,10 @@ router.get('/', (req, res) => {
         } else {
             res.json(photos)
         }
+
     })
 })
+
 
 
 

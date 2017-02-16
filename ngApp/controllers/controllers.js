@@ -9,7 +9,8 @@ var photo;
                 this.$window = $window;
                 this.$location = $location;
                 this.$state = $state;
-                this.photo = photoService.getPhoto();
+                this.photos = this.photoService.getPhoto();
+                console.log(this.photos);
             }
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;
@@ -25,8 +26,6 @@ var photo;
                 this.filepickerService = filepickerService;
                 this.photoService = photoService;
                 this.$state = $state;
-                this.photo = this.photoService.getPhoto();
-                console.log(this.photo);
             }
             AddPhotoController.prototype.addPhoto = function () {
                 var _this = this;

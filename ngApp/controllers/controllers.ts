@@ -4,7 +4,7 @@ namespace photo.Controllers {
       public file;
       public url;
 
-      public photo;
+      public photos;
 
       public deletePhoto(id) {
         this.photoService.deletePhoto(id).then(() => {
@@ -20,7 +20,9 @@ namespace photo.Controllers {
           public $location,
           public $state
  ) {
-   this.photo = photoService.getPhoto();
+
+   this.photos = this.photoService.getPhoto();
+ console.log(this.photos)
  }
 
 
@@ -52,8 +54,7 @@ export class AddPhotoController {
     private photoService: photo.Services.PhotoService,
     public $state
   ) {
-    this.photo = this.photoService.getPhoto();
-  console.log(this.photo)
+
   }
 }
 export class EditPhotoController{

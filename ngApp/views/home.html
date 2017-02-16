@@ -3,10 +3,10 @@
 
 
 <ul>
-  <li ng-repeat="p in vm.photo">
-    <img ng-src="{{p.url.url}}" alt="" />
-    <p>Title: {{p.url.title}}</p>
-    <p>Description: {{p.url.description}}</P>
+  <li ng-repeat="p in vm.photos">
+    <img ng-src="{{p.url}}" alt="" />
+    <p>Title: {{p.title}}</p>
+    <p>Description: {{p.description}}</P>
     <a href="/editPhoto/{{p._id}}">Edit</a>
     <a href="#" ng-click="vm.deletePhoto(p._id)">Delete</a>
   </li>
