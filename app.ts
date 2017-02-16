@@ -1,15 +1,16 @@
 import * as express from 'express';
 import * as path from 'path';
+import * as mongoose from 'mongoose';
 import * as favicon from 'serve-favicon';
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 import photo from './api/photos';
-import Database from './db';
-import Photo from './models/photoSchema';
 
-Database.connect();
+require('./models/photoSchema');
+
+
 
 import routes from './routes/index';
 import users from './routes/users';
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
-
+mongoose.connect('mongodb://Mlangford67:Carnifex6@ds159208.mlab.com:59208/piranhaspiderdb');
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/photos', photo);

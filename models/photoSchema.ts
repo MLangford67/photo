@@ -1,21 +1,17 @@
 import * as mongoose from 'mongoose';
 
-export interface IPhoto extends mongoose.Document {
-  title: string;
-  discription: string;
-
-}
+// export interface IPhoto extends mongoose.Document {
+//   title: string;
+//   description: string;
+//
+// }
 
 let photoSchema = new mongoose.Schema({
-  title:{
-    type:String,
-    required: true,
-    minlength: 2,
-  },
-  discription:{
-    type:String,
-    require: true
-  }
+  title:String,
+
+  description:String,
+
+  url:String
 })
 
-export default mongoose.model<IPhoto>('Photo', photoSchema);
+export default mongoose.model('Photo', photoSchema);

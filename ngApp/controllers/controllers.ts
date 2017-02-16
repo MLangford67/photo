@@ -52,7 +52,8 @@ export class AddPhotoController {
     private photoService: photo.Services.PhotoService,
     public $state
   ) {
-
+    this.photo = this.photoService.getPhoto();
+  console.log(this.photo)
   }
 }
 export class EditPhotoController{
