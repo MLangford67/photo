@@ -4,7 +4,7 @@ namespace photo.Controllers {
       public file;
       public url;
 
-      public photos;
+      public photo = {url:'', _id:''};
 
       public deletePhoto(id) {
         this.photoService.deletePhoto(id).then(() => {
@@ -21,7 +21,7 @@ namespace photo.Controllers {
           public $state
  ) {
 
-   this.photos = this.photoService.getPhoto();
+   this.photo = this.photoService.getPhoto();
  // console.log(this.photos)
  }
 
@@ -30,7 +30,7 @@ namespace photo.Controllers {
 
 
 export class AddPhotoController {
-  public photo;
+  public photo = {url:'', _id:''};
   public id
 
   public addPhoto() {
@@ -59,7 +59,7 @@ export class AddPhotoController {
   }
 }
 export class EditPhotoController{
-  public photo;
+  public photo = {url:'', _id:''};
   public photos;
   public id;
 
@@ -95,7 +95,7 @@ export class EditPhotoController{
    public $stateParams: ng.ui.IStateParamsService
  ) {
 
-    this.photo = $stateParams['id'];
+    this.photo['_id'] = $stateParams['id'];
 
 
  }

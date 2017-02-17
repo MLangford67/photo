@@ -8,11 +8,11 @@ import Photo from '../models/photoSchema';
 let router = express.Router();
 
 router.post('/', (req, res) => {
-console.log(req.body._id);
+console.log(req.body);
   let photo = req.body;
-  photo.title = req.body.url.title;
-  photo.description = req.body.url.description;
-  photo.url = req.body.url.url;
+  photo.title = req.body.title;
+  photo.description = req.body.description;
+  photo.url = req.body.url;
   photo._id = new mongodb.ObjectID(req.body._id)
   database.db.collection('photos').save(req.body).then((newPhoto) => {
       res.json(newPhoto);
@@ -21,6 +21,22 @@ console.log(req.body._id);
      res.send(err)
    })
 });
+
+
+// router.post('/', (req, res) => {
+// console.log(req.body._id);
+//   let photo = req.body;
+//   photo.title = req.body.url.title;
+//   photo.description = req.body.url.description;
+//   photo.url = req.body.url.url;
+//   photo._id = new mongodb.ObjectID(req.body._id)
+//   database.db.collection('photos').save(req.body).then((newPhoto) => {
+//       res.json(newPhoto);
+//     }).catch((err)=>{
+//       console.log(err);
+//      res.send(err)
+//    })
+// });
 
 
        // console.log(req.body);

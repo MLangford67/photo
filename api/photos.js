@@ -4,11 +4,11 @@ var db_1 = require("../db");
 var mongodb = require("mongodb");
 var router = express.Router();
 router.post('/', function (req, res) {
-    console.log(req.body._id);
+    console.log(req.body);
     var photo = req.body;
-    photo.title = req.body.url.title;
-    photo.description = req.body.url.description;
-    photo.url = req.body.url.url;
+    photo.title = req.body.title;
+    photo.description = req.body.description;
+    photo.url = req.body.url;
     photo._id = new mongodb.ObjectID(req.body._id);
     db_1.default.db.collection('photos').save(req.body).then(function (newPhoto) {
         res.json(newPhoto);

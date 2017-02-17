@@ -9,7 +9,8 @@ var photo;
                 this.$window = $window;
                 this.$location = $location;
                 this.$state = $state;
-                this.photos = this.photoService.getPhoto();
+                this.photo = { url: '', _id: '' };
+                this.photo = this.photoService.getPhoto();
             }
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;
@@ -25,6 +26,7 @@ var photo;
                 this.filepickerService = filepickerService;
                 this.photoService = photoService;
                 this.$state = $state;
+                this.photo = { url: '', _id: '' };
             }
             AddPhotoController.prototype.addPhoto = function () {
                 var _this = this;
@@ -50,7 +52,8 @@ var photo;
                 this.photoService = photoService;
                 this.$state = $state;
                 this.$stateParams = $stateParams;
-                this.photo = $stateParams['id'];
+                this.photo = { url: '', _id: '' };
+                this.photo['_id'] = $stateParams['id'];
             }
             EditPhotoController.prototype.editPhoto = function (photo) {
                 var _this = this;
