@@ -8,7 +8,7 @@ var photo;
                 this.PhotoResource = $resource('/api/photos/:id');
             }
             PhotoService.prototype.savePhoto = function (photo) {
-                return this.PhotoResource.save({ url: photo }).$promise;
+                return this.PhotoResource.save({ id: this.id }, photo).$promise;
             };
             PhotoService.prototype.getPhoto = function () {
                 return this.PhotoResource.query();

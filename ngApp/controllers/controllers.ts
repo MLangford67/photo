@@ -31,6 +31,7 @@ namespace photo.Controllers {
 
 export class AddPhotoController {
   public photo;
+  public id
 
   public addPhoto() {
     this.photoService.savePhoto(this.photo).then(() => {
@@ -64,7 +65,7 @@ export class EditPhotoController{
 
  public editPhoto(photo) {
 
-   //this.photo._id = this.id;
+  //  this.photo._id = this.id;
        this.photoService.savePhoto(this.photo).then(() => {
          this.$state.go('home');
        })
@@ -91,11 +92,12 @@ export class EditPhotoController{
    private filepickerService,
    private photoService: photo.Services.PhotoService,
    public $state,
-   public $stateParams
+   public $stateParams: ng.ui.IStateParamsService
  ) {
-   if($stateParams) {
-     this.id = $stateParams['id'];
-   }
+
+    this.photo = $stateParams['id'];
+
+
  }
 }
 

@@ -8,17 +8,20 @@ import Photo from '../models/photoSchema';
 let router = express.Router();
 
 router.post('/', (req, res) => {
-
+console.log(req.body._id);
   let photo = req.body;
   photo.title = req.body.url.title;
   photo.description = req.body.url.description;
   photo.url = req.body.url.url;
-  photo._id = new mongodb.ObjectID(req.body.id)
+  photo._id = new mongodb.ObjectID(req.body._id)
   database.db.collection('photos').save(req.body).then((newPhoto) => {
       res.json(newPhoto);
-    })
-
+    }).catch((err)=>{
+      console.log(err);
+     res.send(err)
+   })
 });
+
 
        // console.log(req.body);
        // let photo:any = new Photo();

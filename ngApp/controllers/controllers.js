@@ -50,9 +50,7 @@ var photo;
                 this.photoService = photoService;
                 this.$state = $state;
                 this.$stateParams = $stateParams;
-                if ($stateParams) {
-                    this.id = $stateParams['id'];
-                }
+                this.photo = $stateParams['id'];
             }
             EditPhotoController.prototype.editPhoto = function (photo) {
                 var _this = this;

@@ -3,10 +3,10 @@ namespace photo.Services {
    public PhotoResource;
    public UpdateResource;
    public id;
-  
+
 
    public savePhoto(photo) {
-      return this.PhotoResource.save({url: photo}).$promise;
+      return this.PhotoResource.save({id: this.id}, photo).$promise;
   }
 
    public getPhoto() {
