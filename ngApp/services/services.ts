@@ -8,7 +8,6 @@ namespace photo.Services {
    public savePhoto(photo) {
       return this.PhotoResource.save({id: this.id}, photo).$promise;
   }
-
    public getPhoto() {
      return this.PhotoResource.query();
 

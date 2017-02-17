@@ -26,7 +26,6 @@ var photo;
                 this.filepickerService = filepickerService;
                 this.photoService = photoService;
                 this.$state = $state;
-                this.photo = { url: '', _id: '' };
             }
             AddPhotoController.prototype.addPhoto = function () {
                 var _this = this;

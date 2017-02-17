@@ -30,7 +30,7 @@ namespace photo.Controllers {
 
 
 export class AddPhotoController {
-  public photo = {url:'', _id:''};
+  public photo;       // = {url:'', _id:''};
   public id
 
   public addPhoto() {
