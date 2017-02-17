@@ -10,7 +10,6 @@ var photo;
                 this.$location = $location;
                 this.$state = $state;
                 this.photos = this.photoService.getPhoto();
-                console.log(this.photos);
             }
             HomeController.prototype.deletePhoto = function (id) {
                 var _this = this;
@@ -56,9 +55,10 @@ var photo;
                 }
             }
             EditPhotoController.prototype.editPhoto = function (photo) {
-                this.photo._id = this.id;
-                this.photo.url = photo.url;
-                console.log(this.photo);
+                var _this = this;
+                this.photoService.savePhoto(this.photo).then(function () {
+                    _this.$state.go('home');
+                });
             };
             EditPhotoController.prototype.pickFile = function () {
                 this.filepickerService.pick({
@@ -67,7 +67,7 @@ var photo;
             };
             EditPhotoController.prototype.fileUploaded = function (file) {
                 this.photo.url = file.url;
-                console.log(this.photo);
+                this.photoService.savePhoto(this.photo);
             };
             return EditPhotoController;
         }());

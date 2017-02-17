@@ -6,7 +6,7 @@
   <li ng-repeat="p in vm.photos">
     <img ng-src="{{p.url}}" alt="" />
     <p>Title: {{p.title}}</p>
-    <p>Description: {{p.description}}</P>
+    <p>Description: {{p.description}}</p>
     <a href="/editPhoto/{{p._id}}">Edit</a>
     <a href="#" ng-click="vm.deletePhoto(p._id)">Delete</a>
   </li>

@@ -24,7 +24,7 @@ namespace photo {
             .state('Edit', {
                 url: '/editPhoto/:id',
                 templateUrl: '/ngApp/views/editPhoto.html',
-                controller: photo.Controllers.AddPhotoController,
+                controller: photo.Controllers.EditPhotoController,
                 controllerAs: 'vm'
             })
 

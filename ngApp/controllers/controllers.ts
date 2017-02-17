@@ -22,7 +22,7 @@ namespace photo.Controllers {
  ) {
 
    this.photos = this.photoService.getPhoto();
- console.log(this.photos)
+ // console.log(this.photos)
  }
 
 
@@ -59,15 +59,22 @@ export class AddPhotoController {
 }
 export class EditPhotoController{
   public photo;
+  public photos;
   public id;
 
  public editPhoto(photo) {
-   this.photo._id = this.id;
-   this.photo.url = photo.url;
-   console.log(this.photo)
-  //  this.photoService.savePhoto(this.photo).then(() => {
-  //    this.$state.go('home');
-  //  })
+
+   //this.photo._id = this.id;
+       this.photoService.savePhoto(this.photo).then(() => {
+         this.$state.go('home');
+       })
+
+  // this.photo._id = this.photo;
+  // this.photo.url = photo.url;
+  // this.photoService.editPhoto(this.id ,photo).then(() => {
+  //   this.$state.go('home');
+  // })
+
  }
  public pickFile () {
    this.filepickerService.pick({
@@ -77,8 +84,8 @@ export class EditPhotoController{
 
  public fileUploaded(file) {
    this.photo.url = file.url;
-  //  this.photoService.savePhoto(this.photo);
-   console.log(this.photo);
+   this.photoService.savePhoto(this.photo);
+
  }
  constructor(
    private filepickerService,

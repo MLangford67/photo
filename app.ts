@@ -7,6 +7,9 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 import photo from './api/photos';
+import Database from './db';
+
+Database.connect();
 
 require('./models/photoSchema');
 
@@ -31,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
-mongoose.connect('mongodb://Mlangford67:Carnifex6@ds159208.mlab.com:59208/piranhaspiderdb');
+// mongoose.connect('mongodb://Mlangford67:Carnifex6@ds159208.mlab.com:59208/piranhaspiderdb');
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/photos', photo);

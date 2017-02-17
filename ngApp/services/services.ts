@@ -1,7 +1,9 @@
 namespace photo.Services {
   export class PhotoService {
    public PhotoResource;
-
+   public UpdateResource;
+   public id;
+  
 
    public savePhoto(photo) {
       return this.PhotoResource.save({url: photo}).$promise;
@@ -9,8 +11,12 @@ namespace photo.Services {
 
    public getPhoto() {
      return this.PhotoResource.query();
-     
-        }
+
+    }
+    // public editPhoto(photo){
+    //
+    //   return this.PhotoResource.save({id: this.id}, photo).$promise;
+    //   }
 
 
    public deletePhoto(id) {
@@ -18,10 +24,12 @@ namespace photo.Services {
    }
 
    constructor(
-     private $resource
+     private $resource,
+
    ) {
 
      this.PhotoResource = $resource('/api/photos/:id');
+
 
    }
     }

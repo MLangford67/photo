@@ -1,29 +1,27 @@
 "use strict";
 var express = require("express");
-var photoSchema_1 = require("../models/photoSchema");
+var db_1 = require("../db");
+var mongodb = require("mongodb");
 var router = express.Router();
 router.post('/', function (req, res) {
-    var photo = new photoSchema_1.default();
+    var photo = req.body;
     photo.title = req.body.url.title;
     photo.description = req.body.url.description;
     photo.url = req.body.url.url;
-    photo.save(function (err, newPhoto) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.end();
-        }
+    photo._id = new mongodb.ObjectID(req.body.id);
+    db_1.default.db.collection('photos').save(req.body).then(function (newPhoto) {
+        res.json(newPhoto);
     });
 });
 router.get('/', function (req, res) {
-    photoSchema_1.default.find({}, function (err, photos) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.json(photos);
-        }
+    db_1.default.db.collection('photos').find().toArray().then(function (photos) {
+        res.json(photos);
+    });
+});
+router.delete('/:id', function (req, res) {
+    var photoId = new mongodb.ObjectID(req.params['id']);
+    db_1.default.db.collection('photos').remove({ _id: photoId }).then(function () {
+        res.sendStatus(200);
     });
 });
 Object.defineProperty(exports, "__esModule", { value: true });
